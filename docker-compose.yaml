@@ -1,0 +1,26 @@
+services:
+  # Ollama service
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+        - 11434:11434
+    volumes:
+        - ./ollama:/root/.ollama
+        - ./ollama-entry-point.sh:/entrypoint.sh
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: always
+    entrypoint: ["/usr/bin/bash", "/entrypoint.sh"]
+
+  # Custom local service
+  local-service:
+    container_name: job-buddy
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    # Example environment variable to reference the Ollama service:
+    environment:
+      OLLAMA_HOST: "http://ollama:11411"
+    depends_on:
+      - ollama
