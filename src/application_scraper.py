@@ -8,7 +8,7 @@ client = Client(
 
 def check_application(application)->bool:
     print("checking an application")
-    
+
     prompt = f"""
         {application}
 
@@ -55,7 +55,8 @@ def check_application(application)->bool:
         
     """
 
-    response: ChatResponse = client.chat(model='deepseek-r1:1.5b', messages=[
+    # response: ChatResponse = client.chat(model='deepseek-r1:1.5b', messages=[
+    response: ChatResponse = client.chat(model='sroecker/sauerkrautlm-7b-hero', messages=[
     {
         'role': 'user',
         'content': prompt,

@@ -12,5 +12,9 @@ echo "🔴 Retrieve Deepseek model..."
 ollama pull deepseek-r1:1.5b
 echo "🟢 Done!"
 
+echo "🔴 Retrieve sauerkraut model..."
+ollama pull sroecker/sauerkrautlm-7b-hero
+echo "🟢 Done!"
+
 # Wait for Ollama process to finish.
 wait $pid
